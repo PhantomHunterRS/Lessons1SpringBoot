@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS EMPLOYEES (
     EMPLOYEE_CITIZENSHIP_NAME VARCHAR (255) NOT NULL
     comment 'ГражданствоСотрудника, Текст(255), Обязатель. заполнение',
     EMPLOYEE_CITIZENSHIP_CODE INTEGER NOT NULL
-    comment 'ГражданствоСотрудника, Число, Обязатель. заполнение',
+    comment 'КодГражданствоСотрудника, Число, Обязатель. заполнение',
     EMPLOYEE_IS_IDENTIFIED BOOLEAN NOT NULL
     comment 'Работает/Уволен Сотрудника, Булево, Обязатель. заполнение'
 );
