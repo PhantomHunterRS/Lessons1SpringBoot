@@ -4,7 +4,6 @@
     <data-source source="LOCAL" name="SpringBoot" uuid="8073680a-7553-4248-8a78-aec6ed66c2b4">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
-      <schema-control>AUTOMATIC</schema-control>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
       <driver-properties>
