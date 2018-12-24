@@ -2,6 +2,7 @@ package ru.springboot.model;
 
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * PHANTOMHUNTER
@@ -108,5 +109,35 @@ public class Organizations {
         this.organizationPhone = organizationPhone;
         this.organizationIsAlive = organizationIsAlive;
     }
+    /*-------------------BEGIN.Организация - Сотрудники----------------------*/
+    private Set<Employees> employees;
+    @org.jetbrains.annotations.Contract(pure = true)
+    @OneToMany(
+            mappedBy="organizations",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private Set<Employees> getEmployees(){
+        return employees;
+    }
+    public void addEmployees(Employees employees) {
+        getEmployees().add(employees);
+        employees.setOrganizations(this);
+    }
+    public void removeEmployees(Employees employees) {
+        getEmployees().remove(employees);
+        employees.setOrganizations(null);
+    }
+    /*-------------------- END.Организация - Сотрудники----------------------*/
+    /*-------------------BEGIN. Организация - Адресс-------------------------*/
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "addressId")
+        public Address getAddress() {
+            return address;
+    }
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+    /*-------------------- END. Организация - Адресс-------------------------*/
 
 }

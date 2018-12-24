@@ -217,10 +217,38 @@ public class Employees {
         getDocs().remove(documents);
         documents.getEmployees().remove(this);
     }
-    /*END. Сотрудники - Документы */
-
+    /*-------------------END. Сотрудники - Документы -------------------------*/
     /*-------------------BEGIN. Сотрудники - Офис-----------------------------*/
-
-
-    /*-------------------- END. Сотрудники - Офис-----------------*/
+        private Office office;
+    @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "officeId")
+    public Office getOffice() {
+        return office;
+    }
+    public void setOffice(Office office) {
+        this.office = office;
+    }
+    /*-------------------- END. Сотрудники - Офис-----------------------------*/
+    /*-------------------BEGIN. Сотрудники - Страна---------------------------*/
+    private Countries countries;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "countriesId")
+    public Countries getCountries() {
+        return countries;
+    }
+    public void setCountries(Countries countries) {
+        this.countries = countries;
+    }
+    /*-------------------- END. Сотрудники - Страна---------------------------*/
+    /*-------------------BEGIN. Сотрудники - Организация----------------------*/
+    private Organizations organizations;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "organizationId")
+    public Organizations getOrganizations() {
+        return organizations;
+    }
+    public void setOrganizations(Organizations organizations) {
+        this.organizations = organizations;
+    }
+    /*-------------------- END. Сотрудники - Организация----------------------*/
 }

@@ -2,6 +2,7 @@ package ru.springboot.model;
 
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * PHANTOMHUNTER
@@ -52,4 +53,27 @@ public class Countries {
         this.countriesName = countriesName;
         this.countriesCode = countriesCode;
     }
+    /*-------------------BEGIN. Страна - Сотрудники---------------------------*/
+    private Set<Employees> employees;
+    @org.jetbrains.annotations.Contract(pure = true)
+    @OneToMany(
+            mappedBy="countries",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private Set<Employees> getEmployees(){
+        return employees;
+    }
+    public void addEmployees(Employees employees) {
+        getEmployees().add(employees);
+        employees.setCountries(this);
+    }
+    public void removeEmployees(Employees employees) {
+        getEmployees().remove(employees);
+        employees.setCountries(null);
+    }
+    /*-------------------- END. Страна - Сотрудники---------------------------*/
+
+
+
 }

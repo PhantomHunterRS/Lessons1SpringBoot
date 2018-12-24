@@ -90,5 +90,35 @@ public class Office {
         this.officePhone = officePhone;
         this.officeIsAlive = officeIsAlive;
     }
-
+    /*-------------------BEGIN. Офис - Сотрудники-----------------------------*/
+    private Set<Employees> employees;
+    @org.jetbrains.annotations.Contract(pure = true)
+    @OneToMany(
+            mappedBy="office",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private Set<Employees> getEmployees(){
+        return employees;
+    }
+    public void addEmployees(Employees employees) {
+        getEmployees().add(employees);
+        employees.setOffice(this);
+    }
+    public void removeEmployees(Employees employees) {
+        getEmployees().remove(employees);
+        employees.setOffice(null);
+    }
+    /*---------------------END. Офис - Сотрудники-----------------------------*/
+    /*-------------------BEGIN. Офис - Адресс --------------------------------*/
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "addressId")
+    public Address getAddress() {
+        return address;
+    }
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+    /*---------------------END. Офис - Адресс --------------------------------*/
 }
+

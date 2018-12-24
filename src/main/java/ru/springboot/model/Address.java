@@ -1,6 +1,7 @@
 package ru.springboot.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * PHANTOMHUNTER
@@ -89,4 +90,47 @@ public class Address {
         this.addressHousing = addressHousing;
         this.addressApartament = addressApartament;
     }
+    /*-------------------BEGIN. Адресс - Организация-------------------------*/
+    private Set<Organizations> organizations;
+    @org.jetbrains.annotations.Contract(pure = true)
+    @OneToMany(
+            mappedBy="address",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private Set<Organizations> getOrganizations(){
+        return organizations;
+    }
+    public void addOrganizations(Organizations organizations) {
+        getOrganizations().add(organizations);
+        organizations.setAddress(this);
+    }
+    public void removeEmployees(Organizations organizations) {
+        getOrganizations().remove(organizations);
+        organizations.setAddress(null);
+    }
+
+    /*-------------------- END. Адресс - Организация-------------------------*/
+    /*-------------------BEGIN. Адресс - Офис---------------------------------*/
+    private Set<Office> offices;
+    @org.jetbrains.annotations.Contract(pure = true)
+    @OneToMany(
+            mappedBy="address",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private Set<Office> getOffice(){
+        return offices;
+    }
+    public void addOffice(Office offices) {
+        getOffice().add(offices);
+        offices.setAddress(this);
+    }
+    public void removeEmployees(Office offices) {
+        getOffice().remove(offices);
+        offices.setAddress(null);
+    }
+    /*---------------------END. Адресс - Офис--------------------------------*/
+
+
 }
