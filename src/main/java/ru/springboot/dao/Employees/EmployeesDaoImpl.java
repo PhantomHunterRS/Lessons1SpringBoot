@@ -29,7 +29,7 @@ public class EmployeesDaoImpl implements EmployeesDao{
         }
 
         @Override
-        public void save(Employees employees) {
+        public void update(Employees employees) {
             em.persist(employees);
         }
 

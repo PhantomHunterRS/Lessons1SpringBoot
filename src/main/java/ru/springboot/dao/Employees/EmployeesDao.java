@@ -3,6 +3,9 @@ package ru.springboot.dao.Employees;
 import ru.springboot.model.Employees;
 
 import java.util.List;
+/**
+ * Сотрудник
+ */
 
 public interface EmployeesDao {
     /**
@@ -14,7 +17,6 @@ public interface EmployeesDao {
 
     /**
      * Получить Employees по идентификатору
-     *
      * @param employeeId
      * @return
      */
@@ -22,8 +24,7 @@ public interface EmployeesDao {
 
     /**
      * Сохранить Employees
-     *
-     * @param Employees
+     *@param Employees
      */
-    void save(Employees employees);
+    void update(Employees employees);
 }

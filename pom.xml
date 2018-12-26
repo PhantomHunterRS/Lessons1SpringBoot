@@ -13,8 +13,12 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.6.RELEASE</version>
     </parent>
+    <name>SpringBoot</name>
+
     <properties>
         <java.version>1.8</java.version>
+        <swagger.version>2.2.2</swagger.version>
+        <orika.mapper.version>1.5.2</orika.mapper.version>
     </properties>
 
     <dependencies>
@@ -41,16 +45,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>16.0.3</version>
-            <scope>compile</scope>
-        </dependency>
-
-
-    </dependencies>
-
+     </dependencies>
     <!--  Загрузка версий модулей с оригинального сайта -->
        <repositories>
            <repository>
@@ -59,10 +54,15 @@
                <snapshots><enabled>true</enabled></snapshots>
            </repository>
        </repositories>
-
            <!-- Импорт всех модулей MAVEN-->
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.jetbrains</groupId>
+                <artifactId>annotations</artifactId>
+                <version>16.0.3</version>
+                <scope>compile</scope>
+            </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-framework-bom</artifactId>
@@ -70,7 +70,35 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/io.swagger/swagger-annotations -->
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>1.5.21</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/io.swagger/swagger-annotations -->
+            <!-- модульные и интеграционные тесты -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>2.0.0-rc2</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
 
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
