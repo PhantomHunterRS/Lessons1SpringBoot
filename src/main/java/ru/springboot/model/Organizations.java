@@ -111,7 +111,7 @@ public class Organizations {
     }
     /*-------------------BEGIN.Организация - Сотрудники----------------------*/
     private Set<Employees> employees;
-    @org.jetbrains.annotations.Contract(pure = true)
+
     @OneToMany(
             mappedBy="organizations",
             cascade = CascadeType.ALL,

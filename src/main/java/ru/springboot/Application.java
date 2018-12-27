@@ -12,8 +12,15 @@ import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Locale;
+
+import static springfox.documentation.builders.PathSelectors.regex;
 
 @EnableSwagger2
 @ImportResource("spring_mvc_config.xml")
@@ -41,10 +48,19 @@ public class Application {
     @Bean
     public Docket postApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("persons")
+                .groupName("organization")
                 .apiInfo(apiInfo())
                 .select()
-                .paths(regex("/person.*"))
+                .paths(regex("/api/organization/list*"))
+                .build();
+    }
+    @Bean
+    public Docket postApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("office")
+                .apiInfo(apiInfo())
+                .select()
+                .paths(regex("api/office/list*"))
                 .build();
     }
 

@@ -92,7 +92,7 @@ public class Office {
     }
     /*-------------------BEGIN. Офис - Сотрудники-----------------------------*/
     private Set<Employees> employees;
-    @org.jetbrains.annotations.Contract(pure = true)
+
     @OneToMany(
             mappedBy="office",
             cascade = CascadeType.ALL,
