@@ -1,5 +1,6 @@
 package ru.springboot.model.mapper;
 
+import ma.glasnost.orika.MapperFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,8 @@ import java.util.List;
  **/
 @Service
 public class MapperFacadeImpl implements MapperFacade {
+    private final MapperFactory mapperFactory;
+
     @Autowired
     public MapperFacadeImpl(MapperFactory mapperFactory) {
         this.mapperFactory = mapperFactory;
